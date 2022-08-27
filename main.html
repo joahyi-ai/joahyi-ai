@@ -1,0 +1,113 @@
+<html>
+
+<head>
+    <title>IG Exporter</title>
+    <script src="js/export.js"></script>
+    <link rel="stylesheet" href="css/export.css">
+    <style>
+        .container {
+            max-width: 960px;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+    <div class="container">
+        <main>
+            <div class="py-5 text-center"><img class="d-block mx-auto mb-4" src="images/icon128.png" alt="" width="128"
+                    height="128">
+                <h2>IG Extractor</h2>
+                <p class="lead">Extract followers and following from any Instagram profile</p>
+            </div>
+            <div class="row g-5">
+                <div class="col-md-7 col-lg-8">
+                    <h4 class="mb-3">Options</h4>
+                    <form id="parserForm">
+                        <div class="row g-3">
+                            <div class="col-12"><label for="igUser" class="form-label">IG User or URL</label> <input
+                                    type="text" class="form-control" id="igUser"
+                                    placeholder="Instagram user name like @cristiano or a full URL" required=""></div>
+                            <div class="col-12"><label for="delay">Delay</label> <input type="number"
+                                    class="form-control" id="delay" aria-describedby="delayHelp"
+                                    placeholder="Milliseconds" value="500"> <small id="delayHelp"
+                                    class="form-text text-muted">Instagram prevents scraping. Set larger timeout if you
+                                    have issues. Timeout is set in milliseconds. 1 second = 1000 milliseconds.</small>
+                            </div>
+                            <div class="my-3">
+                                <div class="form-check"><input class="form-check-input" type="radio" name="target"
+                                        id="targetFollowers" checked="checked"> <label class="form-check-label"
+                                        for="targetFollowers">Followers</label></div>
+                                <div class="form-check"><input class="form-check-input" type="radio" name="target"
+                                        id="targetFollowing"> <label class="form-check-label"
+                                        for="targetFollowing">Following</label></div>
+                            </div>
+                            <div class="my-3 d-grid gap-4 d-md-flex"><button id="submit" class="btn btn-primary btn-lg"
+                                    type="submit">Start parsing</button> <button id="stopParsing"
+                                    class="btn btn-secondary btn-lg" disabled="disabled">Stop parsing</button></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-5 col-lg-4 order-md-last">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3"><span class="">Progress</span>
+                        <span class="badge bg-primary rounded-pill" id="statusProducts2"></span></h4>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h6 class="my-0">Status</h6>
+                            </div><span class="text-muted" id="statusText">Not started</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h6 class="my-0">Errors</h6>
+                            </div><span class="text-muted" id="statusErrors"></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h6 class="my-0">Total profiles</h6>
+                            </div><span class="text-muted" id="totalProfiles">0</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h6 class="my-0">Found profiles</h6>
+                            </div><span class="text-muted" id="statusProfiles">0</span>
+                        </li>
+                    </ul>
+                    <div class="w-100 btn-group" role="group" aria-label="Basic mixed styles example"><button
+                            type="submit" class="btn btn-primary" id="saveCSV" disabled="disabled">Save to CSV</button>
+                        <button type="submit" class="btn btn-success" id="saveXLS" disabled="disabled">Save to
+                            XLS/Excel</button></div>
+                    <h4 class="d-flex justify-content-between align-items-center mb-3 mt-3"><span class="">Your
+                            account</span></h4>
+                    <ul class="list-group mb-3">
+                        <li class="nologin list-group-item d-flex justify-content-between lh-sm"><a id="login_link"
+                                href="logi¬n.html" target="_blank">Login</a></li>
+                        <li class="login list-group-item d-flex justify-content-between lh-sm d-none">
+                            <div>
+                                <h6 class="my-0">Email</h6>
+                            </div><span id="emailText">joahyi7@gmail.com</span>
+                        </li>
+                        <li class="login list-group-item d-flex justify-content-between lh-sm d-none">
+                            <div>
+                                <h6 class="my-0">Licence</h6>
+                            </div><span id="licenceStatusText">Premium (Unlimited)</span>
+                        </li>
+                        <li class="non-premium list-group-item d-flex justify-content-between lh-sm d-none"><a
+                                id="buyLink" data-href-template="https://pay.paddle.com/checkout/750117?guest_email="
+                                href="#" target="_blank">Upgrade to premium (Monthly)</a></li>
+                        <li class="premium list-group-item d-flex justify-content-between lh-sm d-none"><a
+                                href="https://www.google.com" id="cancelUrl" target="_blank">Cancel the subscription</a>
+                        </li>
+                        <li class="premium list-group-item d-flex justify-content-between lh-sm d-none"><a
+                                href="https://www.google.com" id="updateUrl" target="_blank">Update payment details</a>
+                        </li>
+                        <li class="login list-group-item d-flex justify-content-between lh-sm d-none"><a href="#"
+                                id="logoutLink">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+        </main>
+    </div>
+</body>
+
+</html>

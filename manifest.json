@@ -1,0 +1,45 @@
+{
+    "manifest_version": 3,
+    "name": "IG Export",
+    "version": "1.0.0",
+    "description": "Export IG followers, following to Excel CSV formats",
+    "icons": {
+      "16": "images/icon-16.png",
+      "32": "images/icon-32.png",
+      "48": "images/icon-48.png",
+      "128": "images/icon-128.png"
+    },
+    "action": {
+          "default_icon": "images/icon-48.png",
+          "default_title": "ig export",
+          "default_popup": "popup.html"
+    },
+    "content_scripts": [
+          {
+              "matches": ["*://*.baidu.com/*"],
+              "js": [
+                  "libs/jquery-3.6.0.min.js",
+                  "content.js"
+              ],
+              "css": ["style.css"],
+              "run_at": "document_end"
+          }
+    ],
+    "background": {
+      "service_worker": 
+        "background.js"
+    },
+    "web_accessible_resources": [
+      {
+      "resources":
+      ["libs/*",
+      "images/*"],
+      "extension_ids":["ihpaodkbejlffoakbdekdjkbimlflkdp"]
+      }
+  ],
+      "permissions": [
+          "tabs",
+          "storage"
+      ],
+      "host_permissions": ["https://api.com/*"]
+  }
